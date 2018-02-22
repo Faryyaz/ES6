@@ -9,7 +9,7 @@
     if (!console) {
         console = {};
     }
-    var old = console.log;
+    
     var logger = document.getElementById('log');
     console.log = function (message) {
         if (typeof message == 'object') {
