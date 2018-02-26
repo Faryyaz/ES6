@@ -90,13 +90,10 @@ and open the template in the editor.
            // but points can be overwritten
            // points = 200; // here points is overwritten.
            
-           // winner can be redeclared inside a block scope but the 2 winner is on different level
+           // winner cannot be redeclared therefore winner is console.log as false;
            // ALWAYS REMEMBER LET IS BLOCK SCOPED, THIS NEXT LINE IS AN IF BLOCK STATEMENT
            if ( points > 40) {
                let winner = true;
-               
-               // will return true as it is inside the block scope
-               console.log('winner is: ' + winner);
            }
            
            // print winner = false;
