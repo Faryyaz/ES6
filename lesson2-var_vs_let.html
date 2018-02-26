@@ -11,49 +11,143 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>This lesson is about "var" scoping</h1>
+        <h1>Var vs let</h1>
         <pre>
-            // age is available globally
-            var age = 100;
-            
-            function ageGroup() {
-                // years is only scoped to this function
-                var years = 50;
-                console.log("years: " + years);
-            }
-            ageGroup();
-            
-            console.log("age: " + age);
-            
-            // returns undefined.
-            // console.log(years);
-            
-            
-            let width = 2;
-            const height = 7;
+            let points = 60;
+           let winner = false;
+           
+           // points cannot be re declared here using let - error points has already been declared. 
+           //let points = 100;
+           // but points can be overwritten
+           // points = 200; // here points is overwritten.
+           
+           // winner cannot be redeclared therefore winner is console.log as false;
+           // ALWAYS REMEMBER LET IS BLOCK SCOPED, THIS NEXT LINE IS AN IF BLOCK STATEMENT
+           if ( points > 40) {
+               let winner = true;
+           }
+           
+           // print winner = false;
+           console.log(winner);
+           
+           // here winner will be true because the same winner variable has been overwritten
+           if ( points > 40 ) {
+               winner = true;
+           }
+           
+           // print winner = true;
+           console.log(winner);
+           
+           
+////////////////////////////////////// constant part ////////////////////////////////
+
+           // it is a constant therefore it cannot be updated.
+           const key = 'abc';
+           
+           
+           // cannot be updated
+           // error: typeError - Assignment to constant variable.
+           //key = 'dfg'
+
+           // a const object is mutable meaning it can be updated
+           const person = {
+               name: 'fary',
+               age: '29'
+           };
+           
+           
+           // returns fary
+           console.log(person.name);
+           
+           //person property 'name' is updated
+           person.name = 'dil';
+           
+           // returns dil
+           console.log(person.name);
+           
+           //however it cannot be updated like so
+           // error: typeError - Assignment to constant variable.
+           //person = {name: 'web'};
+           
+           //Now to freeze the object
+           const pers = Object.freeze(person);
+           
+           // try to update pers.name
+           pers.name = 'omega';
+           
+           // returns dil
+           console.log(pers.name);
         </pre>
         <h3>Console.log: </h3>
         <code id="log"></code>
         <script src="./console.logger.js"></script>
         <script>
-            // age is available globally
-            var age = 100;
-            
-            function ageGroup() {
-                // years is only scoped to this function
-                var years = 50;
-                console.log("years: " + years);
-            }
-            ageGroup();
-            
-            console.log("age: " + age);
-            
-            // returns undefined.
-            // console.log(years);
-            
-            
-            let width = 2;
-            const height = 7;
+           let points = 60;
+           let winner = false;
+           
+           // points cannot be re declared here using let - error points has already been declared. 
+           //let points = 100;
+           // but points can be overwritten
+           // points = 200; // here points is overwritten.
+           
+           // winner cannot be redeclared therefore winner is console.log as false;
+           // ALWAYS REMEMBER LET IS BLOCK SCOPED, THIS NEXT LINE IS AN IF BLOCK STATEMENT
+           if ( points > 40) {
+               let winner = true;
+           }
+           
+           // print winner = false;
+           console.log(winner);
+           
+           // here winner will be true because the same winner variable has been overwritten
+           if ( points > 40 ) {
+               winner = true;
+           }
+           
+           // print winner = true;
+           console.log(winner);
+           
+           
+////////////////////////////////////// constant part ////////////////////////////////
+
+           // it is a constant therefore it cannot be updated.
+           const key = 'abc';
+           
+           
+           // cannot be updated
+           // error: typeError - Assignment to constant variable.
+           //key = 'dfg'
+
+           // a const object is mutable meaning it can be updated
+           const person = {
+               name: 'fary',
+               age: '29'
+           };
+           
+           
+           // returns fary
+           console.log(person.name);
+           
+           //person property 'name' is updated
+           person.name = 'dil';
+           
+           // returns dil
+           console.log(person.name);
+           
+           //however it cannot be updated like so
+           // error: typeError - Assignment to constant variable.
+           //person = {name: 'web'};
+           
+           //Now to freeze the object
+           const pers = Object.freeze(person);
+           
+           // try to update pers.name
+           pers.name = 'omega';
+           
+           // returns dil
+           console.log(pers.name);
+           
+           
         </script>
     </body>
 </html>
