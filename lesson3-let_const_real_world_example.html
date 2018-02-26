@@ -11,142 +11,91 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Var vs let</h1>
+        <h1>Let and const in real world example</h1>
         <pre>
-            let points = 60;
-           let winner = false;
-           
-           // points cannot be re declared here using let - error points has already been declared. 
-           //let points = 100;
-           // but points can be overwritten
-           // points = 200; // here points is overwritten.
-           
-           // winner cannot be redeclared therefore winner is console.log as false;
-           // ALWAYS REMEMBER LET IS BLOCK SCOPED, THIS NEXT LINE IS AN IF BLOCK STATEMENT
-           if ( points > 40) {
-               let winner = true;
-           }
-           
-           // print winner = false;
-           console.log(winner);
-           
-           // here winner will be true because the same winner variable has been overwritten
-           if ( points > 40 ) {
-               winner = true;
-           }
-           
-           // print winner = true;
-           console.log(winner);
-           
-           
-////////////////////////////////////// constant part ////////////////////////////////
+            //iife statement
+            // surname is function scoped, as we know var is function scoped, therefore
+            // it cannot be accessed outside this function
+            ( function(){
+                var surname = 'fary';
+            } );
+            
+            //returns error surname is not defined
+            //console.log(surname);
 
-           // it is a constant therefore it cannot be updated.
-           const key = 'abc';
-           
-           
-           // cannot be updated
-           // error: typeError - Assignment to constant variable.
-           //key = 'dfg'
 
-           // a const object is mutable meaning it can be updated
-           const person = {
-               name: 'fary',
-               age: '29'
-           };
-           
-           
-           // returns fary
-           console.log(person.name);
-           
-           //person property 'name' is updated
-           person.name = 'dil';
-           
-           // returns dil
-           console.log(person.name);
-           
-           //however it cannot be updated like so
-           // error: typeError - Assignment to constant variable.
-           //person = {name: 'web'};
-           
-           //Now to freeze the object
-           const pers = Object.freeze(person);
-           
-           // try to update pers.name
-           pers.name = 'omega';
-           
-           // returns dil
-           console.log(pers.name);
+            {
+                // block scoped
+                const name = 'fary';
+                
+                //print fary
+                console.log('My name is : ' + name );
+            }
+            
+            //returns null
+            console.log( 'name: ' + name );
+            
+            ////////let vs var example
+            
+            for( var i = 0; i < 10; i++ ) {
+                //after 10 seconds we get 10 as a result 'The number is: 10'
+                setTimeout( function() {
+                    console.log( 'The number is: ' + i );
+                }, 1000 );
+            }
+            
+            // now with let
+            for( let i = 0; i < 10; i++ ) {
+                //we go thru each iteration
+                setTimeout( function() {
+                    console.log( 'The number is: ' + i );
+                }, 1000 );
+            }
         </pre>
         <h3>Console.log: </h3>
         <code id="log"></code>
         <script src="./console.logger.js"></script>
         <script>
-           let points = 60;
-           let winner = false;
-           
-           // points cannot be re declared here using let - error points has already been declared. 
-           //let points = 100;
-           // but points can be overwritten
-           // points = 200; // here points is overwritten.
-           
-           // winner cannot be redeclared therefore winner is console.log as false;
-           // ALWAYS REMEMBER LET IS BLOCK SCOPED, THIS NEXT LINE IS AN IF BLOCK STATEMENT
-           if ( points > 40) {
-               let winner = true;
-           }
-           
-           // print winner = false;
-           console.log(winner);
-           
-           // here winner will be true because the same winner variable has been overwritten
-           if ( points > 40 ) {
-               winner = true;
-           }
-           
-           // print winner = true;
-           console.log(winner);
-           
-           
-////////////////////////////////////// constant part ////////////////////////////////
-
-           // it is a constant therefore it cannot be updated.
-           const key = 'abc';
-           
-           
-           // cannot be updated
-           // error: typeError - Assignment to constant variable.
-           //key = 'dfg'
-
-           // a const object is mutable meaning it can be updated
-           const person = {
-               name: 'fary',
-               age: '29'
-           };
-           
-           
-           // returns fary
-           console.log(person.name);
-           
-           //person property 'name' is updated
-           person.name = 'dil';
-           
-           // returns dil
-           console.log(person.name);
-           
-           //however it cannot be updated like so
-           // error: typeError - Assignment to constant variable.
-           //person = {name: 'web'};
-           
-           //Now to freeze the object
-           const pers = Object.freeze(person);
-           
-           // try to update pers.name
-           pers.name = 'omega';
-           
-           // returns dil
-           console.log(pers.name);
-           
+            
+            //iife statement
+            // surname is function scoped, as we know var is function scoped, therefore
+            // it cannot be acessed outside this function
+            ( function(){
+                var surname = 'fary';
+            } );
+            
+            //returns error surname is not defined
+            //console.log(surname);
+            
+            
+            {
+                // block scoped
+                const name = 'fary';
+                
+                //print fary
+                console.log('My name is : ' + name );
+            }
+            
+            //returns null
+            console.log( 'name: ' + name );
+            
+            ////////let vs var example
+            
+            for( var i = 0; i < 10; i++ ) {
+                //after 10 seconds we get 10 as a result 'The number is: 10'
+                setTimeout( function() {
+                    console.log( 'The number is: ' + i );
+                }, 1000 );
+            }
+            
+            // now with let
+            for( let i = 0; i < 10; i++ ) {
+                //we go thru each iteration
+                setTimeout( function() {
+                    console.log( 'The number is: ' + i );
+                }, 1000 );
+            }
+            
            
         </script>
     </body>
