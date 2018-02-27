@@ -12,26 +12,6 @@ and open the template in the editor.
     </head>
     <body>
         <h1>This lesson is about "var" scoping</h1>
-        <pre>
-            // age is available globally
-            var age = 100;
-            
-            function ageGroup() {
-                // years is only scoped to this function
-                var years = 50;
-                console.log("years: " + years);
-            }
-            ageGroup();
-            
-            console.log("age: " + age);
-            
-            // returns undefined.
-            // console.log(years);
-            
-            
-            let width = 2;
-            const height = 7;
-        </pre>
         <h3>Console.log: </h3>
         <code id="log"></code>
         <script src="./console.logger.js"></script>

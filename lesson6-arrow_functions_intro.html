@@ -12,29 +12,6 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Arrow functions Intro</h1>
-        <pre>
-            const names = [ 'tom', 'tim', 'julia' ];
-            
-            // normal way of declaring an anonymous function
-            const fullnames = names.map( function( name ) {
-                return `${ name } Chong`;
-            } );
-            
-            console.log( fullnames );
-            
-            // using arrow syntax we can achieve the same thing
-            const fullnames1 = names.map( ( name ) => {
-                return `${ name } Wong`;
-            } );
-            
-            console.log( fullnames1 );
-            
-            // no need to put the return declaration
-            //implicit return when there is no curly brackets
-            const fullnames2 = names.map( ( name ) => `${ name } Chan` );
-            
-            console.log( fullnames2 );
-        </pre>
         <h3>Console.log: </h3>
         <code id="log"></code>
         <script src="./console.logger.js"></script>
