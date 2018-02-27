@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 7</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>More arrow functions Examples</h1>
+        <pre>
+            
+        </pre>
+        <h3>Console.log: </h3>
+        <code id="log"></code>
+        <script src="./console.logger.js"></script>
+        <script>
+            
+            const race = '100m Dash';
+            const winners = [ 'Tim', 'Tom', 'Julia' ];
+            
+            // What we want is to convert the data above into an object with the winner
+            // notice no return declaration but a rounded bracket ( { //data here } ) has been added because it is an object
+            // notice redundunt word race: race can be replaced by the word race only, feature of ES6
+            const winObj = winners.map( ( winner, index ) => ( { 
+                                name: winner,
+                                race, // same as race: race,
+                                place: index + 1
+                            } ) );
+                            
+            // print to console             
+            console.log( winObj );                
+            
+            // returns in the format of a table in browser console
+            console.table( winObj );
+            
+            
+            const ages = [ 100, 54, 39, 67, 70, 43, 29, 85, 12, 14 ];
+            
+            //filter the array
+            const old = ages.filter( ( age ) => { return age >= 60; } );
+            
+            console.log( old );
+            
+            // this can be written as the followin using implicit return
+            const oldAge = ages.filter( ( age ) => age >= 60 );
+            
+            
+            console.log( oldAge );
+            
+        </script>
+    </body>
+</html>

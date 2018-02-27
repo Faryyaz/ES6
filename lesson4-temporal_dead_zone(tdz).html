@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Temporal Dead zone</h1>
+        <pre>
+            console.log(aVar); // undefined
+            console.log(aLet); // causes ReferenceError: aLet is not defined and breaks the program
+            var aVar = 1;
+            let aLet = 2;
+            
+            
+            //There is a period between entering scope and being declared where they cannot be accessed. This period is the temporal dead zone (TDZ).
+
+            //The TDZ ends when aLet is declared, rather than assigned:
+            
+            
+            //console.log(aLet)  // would throw ReferenceError
+
+            let aLet;
+            console.log(aLet); // undefined
+            aLet = 10;
+            console.log(aLet); // 10
+        </pre>
+        <h3>Console.log: </h3>
+        <code id="log"></code>
+        <script src="./console.logger.js"></script>
+        <script>
+            console.log(aVar); // undefined
+            console.log(aLet); // causes ReferenceError: aLet is not defined and breaks the program
+            var aVar = 1;
+            let aLet = 2;
+            
+            //There is a period between entering scope and being declared where they cannot be accessed. This period is the temporal dead zone (TDZ).
+            //The TDZ ends when aLet is declared, rather than assigned:
+            
+            //console.log(aLet)  // would throw ReferenceError
+            let bLet;
+            console.log(bLet); // undefined
+            bLet = 10;
+            console.log(bLet); // 10
+            
+        </script>
+    </body>
+</html>
