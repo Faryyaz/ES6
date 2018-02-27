@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 8</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .box {
+                width: 50px;
+                height: 50px;
+                padding: 50px;
+                transition: width 0.2s, height 0.6s;
+                color: white;
+                position: relative;
+                background: teal;
+                margin: 0 auto;
+            }
+            .opening {
+                width: 400px;
+                height: 400px;
+            }
+            
+            .box h2 {
+                position: absolute;
+                top:0;
+                transition: all 0.2s;
+                transform: translateX(-300%);
+                font-size: 100px;
+                width: 100%;
+            }
+            
+            .open h2 {
+                transform: translateX(0%);
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>Arrow functions and this</h1>
+        <p>Click on the square</p>
+        <pre>
+            const box = document.querySelector( '.box' );
+            
+            // notice here we are using anonymous function for the click event
+            // simply because arrow function lose the scope of the this variable and it is refered to the window
+//            box.addEventListener( 'click', function(){
+//                let self = this;
+//                this.classList.toggle( 'opening' );
+//                setTimeout( function() {
+//                    self.classList.toggle( 'open' );
+//                }, '500' );
+//            } );
+            
+            // The above code can be written using arrow function in this way
+            box.addEventListener( 'click', function(){
+                //no need to declare a variable here for this
+                //let self = this;
+                
+                let first = 'opening';
+                let second = 'open';
+                
+                // check if box has first, if it does then swap it with second
+                if( box.classList.contains( first ) ) {
+                    
+                    // swap variables in ES6
+                    [ first, second ] = [ second, first ];
+                }
+                
+                this.classList.toggle( first );
+                // notice the arrow function here
+                setTimeout( () => {
+                    //self.classList.toggle( 'open' );
+                    // use this as you normally would because arrow function will refer to the initial this above.
+                    this.classList.toggle( second );
+                }, '500' );
+            } );
+        </pre>
+        <div class="box">
+            <h2>Hello World!</h2>
+        </div>
+        <script>
+            const box = document.querySelector( '.box' );
+            
+            // notice here we are using anonymous function for the click event
+            // simply because arrow function lose the scope of the this variable and it is refered to the window
+//            box.addEventListener( 'click', function(){
+//                let self = this;
+//                this.classList.toggle( 'opening' );
+//                setTimeout( function() {
+//                    self.classList.toggle( 'open' );
+//                }, '500' );
+//            } );
+            
+            // The above code can be written using arrow function in this way
+            box.addEventListener( 'click', function(){
+                //no need to declare a variable here for this
+                //let self = this;
+                
+                let first = 'opening';
+                let second = 'open';
+                
+                // check if box has first, if it does then swap it with second
+                if( box.classList.contains( first ) ) {
+                    
+                    // swap variables in ES6
+                    [ first, second ] = [ second, first ];
+                }
+                
+                this.classList.toggle( first );
+                // notice the arrow function here
+                setTimeout( () => {
+                    //self.classList.toggle( 'open' );
+                    // use this as you normally would because arrow function will refer to the initial this above.
+                    this.classList.toggle( second );
+                }, '500' );
+            } );
+        </script>
+    </body>
+</html>
