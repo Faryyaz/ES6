@@ -43,43 +43,6 @@ and open the template in the editor.
     <body>
         <h1>Arrow functions and this</h1>
         <p>Click on the square</p>
-        <pre>
-            const box = document.querySelector( '.box' );
-            
-            // notice here we are using anonymous function for the click event
-            // simply because arrow function lose the scope of the this variable and it is refered to the window
-//            box.addEventListener( 'click', function(){
-//                let self = this;
-//                this.classList.toggle( 'opening' );
-//                setTimeout( function() {
-//                    self.classList.toggle( 'open' );
-//                }, '500' );
-//            } );
-            
-            // The above code can be written using arrow function in this way
-            box.addEventListener( 'click', function(){
-                //no need to declare a variable here for this
-                //let self = this;
-                
-                let first = 'opening';
-                let second = 'open';
-                
-                // check if box has first, if it does then swap it with second
-                if( box.classList.contains( first ) ) {
-                    
-                    // swap variables in ES6
-                    [ first, second ] = [ second, first ];
-                }
-                
-                this.classList.toggle( first );
-                // notice the arrow function here
-                setTimeout( () => {
-                    //self.classList.toggle( 'open' );
-                    // use this as you normally would because arrow function will refer to the initial this above.
-                    this.classList.toggle( second );
-                }, '500' );
-            } );
-        </pre>
         <div class="box">
             <h2>Hello World!</h2>
         </div>

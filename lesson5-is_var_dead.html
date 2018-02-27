@@ -12,49 +12,6 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Is var dead? When to use const, let and var?</h1>
-        <pre>
-            // var can be use for global scope
-            // dont forget var is function scoped
-            var x = 10; 
-            
-            {
-                var z = 900;
-            }
-            
-            console.log( z ); // returns 900 as var is only function scoped
-            
-            ( function() {
-                var a = 7;
-            } );
-            
-            console.log( a ); // returns undefined
-            
-            // let can be use only when the it will be reassigned a new value
-            // use let for localized variables in smaller scopes
-            let y = 80;
-            
-            //reassign a value to y
-            y = 40;
-            
-            // use const to make non-reassignable variables
-            // Dont use const to make constant (immutable) values
-            const name = 'ES6';
-            
-            // mutable as name can be reassigned
-            const person = {
-                name: 'fary'
-            }
-            
-            // value changed here
-            person.name = 'new name';
-            
-            // use Object.freeze to make it immutable.
-            const man = Object.freeze(person);
-            
-            // name cannot be changed
-            man.name = 'x';
-            
-        </pre>
         <h3>Console.log: </h3>
         <code id="log"></code>
         <script src="./console.logger.js"></script>
