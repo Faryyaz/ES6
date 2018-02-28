@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 9</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Arrow functions and this</h1>
+        <h3>Console.log: </h3>
+        <code id="log"></code>
+        <script src="./console.logger.js"></script>
+        <script>
+            ////////// Old way of writting function with default parameters in javascript
+            function calculateBill( total, tax, tip ) {
+                // default values if param not defined
+                tax = tax || 0.15;
+                tip = tip || 0.20;
+                
+                // OR ANOTHER WAY
+                // if ( tax === undefined ) {
+                    // tax = 0.15;
+                // }
+                
+                // if ( tip === undefined ) {
+                    // tip = 0.20;
+                // }
+                
+               return total + ( total * tax ) + ( total * tip ); 
+            }
+            
+            const bill = calculateBill( 200 );
+            
+            console.log( 'Total bill : ' + bill );
+            
+            
+            ////////// now with ES6
+            const calculateBill2 = ( total, tax = 0.15, tip = 0.2 ) => {
+                return total + ( total * tax ) + ( total * tip ); 
+            }
+            
+            const totalBill = calculateBill2( 300 );
+            
+            console.log( 'Total bill 2 : ' + totalBill );
+        </script>
+    </body>
+</html>
