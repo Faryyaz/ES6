@@ -12,46 +12,6 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Let and const in real world example</h1>
-        <pre>
-            //iife statement
-            // surname is function scoped, as we know var is function scoped, therefore
-            // it cannot be accessed outside this function
-            ( function(){
-                var surname = 'fary';
-            } );
-            
-            //returns error surname is not defined
-            //console.log(surname);
-
-
-            {
-                // block scoped
-                const name = 'fary';
-                
-                //print fary
-                console.log('My name is : ' + name );
-            }
-            
-            //returns null
-            console.log( 'name: ' + name );
-            
-            ////////let vs var example
-            
-            for( var i = 0; i < 10; i++ ) {
-                //after 10 seconds we get 10 as a result 'The number is: 10'
-                setTimeout( function() {
-                    console.log( 'The number is: ' + i );
-                }, 1000 );
-            }
-            
-            // now with let
-            for( let i = 0; i < 10; i++ ) {
-                //we go thru each iteration
-                setTimeout( function() {
-                    console.log( 'The number is: ' + i );
-                }, 1000 );
-            }
-        </pre>
         <h3>Console.log: </h3>
         <code id="log"></code>
         <script src="./console.logger.js"></script>
