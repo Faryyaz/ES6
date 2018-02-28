@@ -12,9 +12,71 @@ and open the template in the editor.
     </head>
     <body>
         <h1>When not to use arrow functions</h1>
-        <h3>Console.log: </h3>
-        <code id="log"></code>
-        <script src="./console.logger.js"></script>
+        <pre>
+            //////////////////////////////////////////////////////
+            //////////////////1. Case///////////////////////////
+            /////////////////////////////////////////////////////
+            
+            //when you really need `this` variable
+            const button = document.querySelector( '.btn' );
+            button.addEventListener( 'click', () => { // use anonymous function here function() {}
+                console.log( this ); // return window
+                
+                // this will not work here
+                this.classList.toggle( 'on' );
+            } );
+            
+            
+            //////////////////////////////////////////////////////
+            //////////////////2. Case///////////////////////////
+            /////////////////////////////////////////////////////
+            
+            // when you need a method to bind to an object
+            const person = {
+              points: 27,
+              score: () => { // use anonymous function here function() {}
+                  return this.points++;
+              }
+            };
+            
+            
+            //////////////////////////////////////////////////////
+            //////////////////3. Case///////////////////////////
+            /////////////////////////////////////////////////////
+            
+            // when you need to add a prototype method
+            class Car {
+                constructor( make, color ) {
+                    this.make = make;
+                    this.color = color;
+                }
+            }
+            
+            const car1 = new Car( 'Ferrari', 'Red' );
+            const car2 = new car( 'Mercedes', 'White' );
+            
+            Car.prototype.print = () => { // use anonymous function here and not arrow function
+                return `The ${ this.make } is ${ this.color }.`;
+            };
+            
+            console.log( car1.print ); // return error print not defined
+            console.log( car2.print );
+            
+            
+            //////////////////////////////////////////////////////
+            //////////////////4. Case///////////////////////////
+            /////////////////////////////////////////////////////
+            
+            // when you need arguments object
+            const orderPerson = () => { // use anonymous function here because arguments cannot be taken from it when using arrow functions
+                const person = Array.from( arguments );
+                return person.map( ( pers, i ) => {
+                    return `Person ${ pers } is ${ i } in queue.`;
+                } );
+            };
+            
+            console.log( orderPerson( 'Jill', 'Jin', 'Jason' )  ); // return error arguments is not defined
+        </pre>
         <script>
             
             //////////////////////////////////////////////////////
