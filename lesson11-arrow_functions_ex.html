@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 11</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Arrow function ex</h1>
+        <pre>
+            Exercise 1 convert all time to seconds and do total using arrow functions.
+        </pre>
+        <ul>
+            <li data-time="5:17">
+                Flexbox video
+            </li>
+            <li data-time="8:22">
+                Flexbox video
+            </li>
+            <li data-time="3:34">
+                Flexbox video
+            </li>
+            <li data-time="5:23">
+                Flexbox video
+            </li>
+            <li data-time="7:12">
+                Flexbox video
+            </li>
+            <li data-time="7:24">
+                Flexbox video
+            </li>
+            <li data-time="6:46">
+                Flexbox video
+            </li>
+        </ul>
+        <script>
+            const total = {
+                
+                init() {
+                    this.getTime();
+                },
+                
+                getTime() {
+                    const elements = [].slice.call( document.querySelectorAll( 'li' ) );
+                    const times = elements.map( ( element ) => {
+                        return element.getAttribute( 'data-time' );
+                    } );
+                },
+                
+                convertIntoSeconds( times ) {
+                    times.map( ( time ) => {
+                        const timeSplit = time.split( ':' );
+                        const mins = timeSplit[ 0 ];
+                        cons sec = timeSplit[ 1 ];
+                        return parseInt( mins ) * 60;
+                    } );
+                },
+            };
+            
+            total.init();
+        </script>
+    </body>
+</html>
