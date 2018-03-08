@@ -22,8 +22,14 @@ and open the template in the editor.
             <li data-time="8:22">
                 Flexbox video
             </li>
+            <li data-time="6:34">
+                Redux video
+            </li>
             <li data-time="3:34">
                 Flexbox video
+            </li>
+            <li data-time="6:46">
+                Redux video
             </li>
             <li data-time="5:23">
                 Flexbox video
@@ -31,11 +37,17 @@ and open the template in the editor.
             <li data-time="7:12">
                 Flexbox video
             </li>
+            <li data-time="2:12">
+                Redux video
+            </li>
             <li data-time="7:24">
                 Flexbox video
             </li>
             <li data-time="6:46">
                 Flexbox video
+            </li>
+            <li data-time="6:46">
+                Redux video
             </li>
         </ul>
         <div class="display"></div>
@@ -56,9 +68,11 @@ and open the template in the editor.
                 },
                 
                 getTime: () => {
-                    const elements = [].slice.call( document.querySelectorAll( 'li' ) );
+                    const items = [].slice.call( document.querySelectorAll( 'li' ) );
+                    const elements = items.filter( ( item ) => item.textContent.includes( 'Flexbox' ) ); //flexbox items only
+                    console.log( elements );
                     const times = elements.map( ( element ) => {
-                        return element.getAttribute( 'data-time' );
+                        return element.dataset.time;
                     } );
                     return times;
                 },
