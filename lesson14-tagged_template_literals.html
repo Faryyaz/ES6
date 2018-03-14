@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 14</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .hl {
+                color: white;
+                background: teal;
+                font-size: 20px;
+                padding: 10px;
+            }
+            
+            .hl:last-child {
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Tagged template literals</h1>
+        <div class="display"></div>
+        <script>
+            
+            // notice ...values this is the arguments, we dont know how much arguments
+            function highlight(strings, ...values) {
+                let str = '';
+                
+                // notice || '', it means if there is no value then display null
+                strings.forEach( ( string, i ) => {
+                    str += `${string} <span contenteditable class='hl'>${values[i] || ''}</span>`;
+                } );
+                return str;
+            };
+            
+            const name = 'Snickers';
+            const age = 3;
+            
+            
+            //notice the function highlight in the sentence
+            const sentence = highlight`My dog ${name} is ${age} years old`;
+            
+            const display = document.querySelector( '.display' );
+            display.innerHTML = sentence;
+        </script>
+    </body>
+</html>
