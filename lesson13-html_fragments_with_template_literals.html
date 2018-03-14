@@ -12,11 +12,12 @@ and open the template in the editor.
     </head>
     <body>
         <h1>HTML fragments with template literals</h1>
-        <pre>
-            
-        </pre>
         <div class="display"></div>
         <script>
+            
+            
+            ////////////////First exercise html basic template
+            
             const person = {
                 name: 'Fary',
                 job: 'web dev',
@@ -26,14 +27,80 @@ and open the template in the editor.
             
             const markup = `
                 <div>
-                    <h2>${name}</h2>
-                    <p>${bio}</p>
+                    <h2>${person.name}</h2>
+                    <p>${person.bio}</p>
                     <ul>
-                    
+                        <li>Job: ${person.job}</li>
+                        <li>City: ${person.city}</li>
                     </ul>
                 </div>
             `;
             
+            const display = document.querySelector( '.display' );
+            display.innerHTML += markup;
+            
+            
+            ///////////////Second exercise looping
+            
+            const dogs =[
+                { name: 'Snickers', age: 2 },
+                { name: 'Milo', age: 3 },
+                { name: 'Tom', age: 1 }
+            ];
+            
+            
+            const markup2 = `
+                <h2>Dogs </h2>
+                <ul>
+                    ${ dogs.map( dog => `<li>${dog.name} is ${dog.age} years old</li>` ).join( '' ) }
+                </ul>
+            `;
+            
+            display.innerHTML += markup2;
+            
+            
+            ///////////////Third exercise If statement
+            
+            const song = {
+                name: 'Live song',
+                artist: 'Wes',
+                featuring: 'Tom'
+            };
+            
+            const markup3 = `
+                <p>
+                    ${song.name} - ${song.artist} <br>
+                    ${song.featuring ? `Featuring: ${song.featuring}` : ``}
+                </p>
+            `;
+            
+            display.innerHTML += markup3;
+            
+            /////////////Forth exercise calling a function inside
+            
+            const beer = {
+                name: 'Belgian Wit',
+                brewery: 'Steam Whistle Brewery',
+                keywords: [ 'pale', 'cloudy', 'spiced', 'crisp' ]
+            };
+            
+            // function defined here
+            const renderKeywords = ( keywords ) => {
+                return `
+                    ${keywords.map( keyword => `<li>${keyword}</li>` )
+                    .join('')}
+                `;
+            }
+            
+            const markup4 = `
+                <h2>${beer.name}</h2>
+                <p>
+                    ${beer.brewery}
+                </p>
+                ${renderKeywords(beer.keywords)}
+            `;
+            
+            display.innerHTML += markup4;
             
         </script>
     </body>
