@@ -35,12 +35,12 @@ and open the template in the editor.
             const addAbbreviations = (strings, ...values) => {
                 const abbreviated = values.map(value => {
                     if( dict[value] ) {
-                        return value;
+                        return `<abbr title="${dict[value]}">${value}</abbr>`;
                     }
                     return value;
                 });
                 
-                console.log(abbreviated);
+                return strings.reduce();
                 
             };
             
