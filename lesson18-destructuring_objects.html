@@ -6,33 +6,32 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Lesson 16</title>
+        <title>Lesson 18</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--using purify js to sanitize dom-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/1.0.3/purify.min.js"></script>
     </head>
     <body>
-        <h1>Sanitizing User data with tagged templates</h1>
+        <h1>Destructuring objects</h1>
         <div class="display"></div>
         <script>
-            
-            function sanitize(strings, ...values) {
-                const dirty =  strings.reduce((prev, next, i) => {
-                     return `${prev}${next}${values[i] || ''}`;
-                }, '');
-                return DOMPurify.sanitize(dirty);
+            const person = {
+                name: 'fary',
+                surname: 'dil',
+                bio: 'I love to code',
+                country: 'mu'
             };
             
-            const aboutMe = sanitize`I love to code <img src="http://unsplash.it/100/100?random"
-            onload="alert('you got hacked')" />`;
+            // instead of doing a variable each time for an object's attribute
+            // const name = person.name;
+            // const surname = person.surname;
+            // const bio = person.bio;
             
-            const html = `
-                <h3>${aboutMe}</h3>
-            `;
-            console.log(html);
-            const display = document.querySelector('.display');
-            display.innerHTML = html;
+            // we can do this now
+            // it will automatically creates variables and assign the proper value to it
+            const { name, surname, country } = person;
+            
+            console.log( name );
+            console.log( surname );
             
         </script>
     </body>
