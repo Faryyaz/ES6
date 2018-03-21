@@ -18,19 +18,21 @@ and open the template in the editor.
         <script>
             
             function sanitize(strings, ...values) {
-                strings.reduce((acc, string, i) => {
-                    
-                });
-            }
+                const dirty =  strings.reduce((prev, next, i) => {
+                     return `${prev}${next}${values[i] || ''}`;
+                }, '');
+                return DOMPurify.sanitize(dirty);
+            };
             
-            const aboutMe = sanitize`
-                I love to code <img src="http://unsplash.it/100/100?random" onload="alert('you got hacked')" />
-            `;
+            const aboutMe = sanitize`I love to code <img src="http://unsplash.it/100/100?random"
+            onload="alert('you got hacked')" />`;
             
             const html = `
                 <h3>${aboutMe}</h3>
             `;
-            
+            console.log(html);
+            const display = document.querySelector('.display');
+            display.innerHTML = html;
             
         </script>
     </body>
