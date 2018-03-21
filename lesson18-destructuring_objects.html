@@ -14,6 +14,8 @@ and open the template in the editor.
         <h1>Destructuring objects</h1>
         <div class="display"></div>
         <script>
+            
+            /////////////////////// example 1
             const person = {
                 name: 'fary',
                 surname: 'dil',
@@ -32,6 +34,49 @@ and open the template in the editor.
             
             console.log( name );
             console.log( surname );
+            
+            
+            /////////////////////// example 2
+            const profile = {
+                first: 'Tom',
+                last: 'YYY',
+                links: {
+                    social: {
+                        twitter: 'www.twitter.com',
+                        facebook: 'www.facebook.com'
+                    }
+                }
+            };
+            
+            // use like aliases to call the different variables
+            // twitter becomes tweet same for facebook -> fb
+            const { twitter: tweet, facebook: fb } = profile.links.social;
+            
+            console.log( tweet );
+            console.log( fb );
+            
+            
+            /////////////////////// example 3
+            const settings = { width: 50, height: 70 };
+            
+            // fall back to the values set if not present
+            // default values set
+            const { width = 100, size = 90, height = 30 } = settings;
+            
+            console.log( width ); // gives us 50 and not 100
+            
+            console.log( size ); // 90
+            
+            console.log( height ); // 70
+            
+            
+            /////////////////////// example 4
+            const { w: wdth = 400, h: length = 500 } = { w: 800 };
+            
+            console.log( wdth ); // 800
+            
+            console.log( height ); // 500
+            
             
         </script>
     </body>
