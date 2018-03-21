@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 17</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>New String methods</h1>
+        <div class="display"></div>
+        <script>
+            const carNumber = 'TE08-2018';
+            const flightNumber = 'AKA12985-JS';
+            const accountNumber = '93284983948RT002'
+            
+            const make = 'BMW';
+            const model = 'X5';
+            const color = 'Royal Green';
+            
+            // new methods
+            
+            // startsWith
+            
+            var x = carNumber.startsWith( 'TE' ); // returns true
+            
+            var y = carNumber.startsWith( '08', 2 ); // returns true because we specify number of characters to jumb
+            
+            console.log( x );
+            
+            console.log( y );
+            
+            
+            //endsWith
+            
+            var z = accountNumber.endsWith( '02' ); // returns true
+            
+            var zz = accountNumber.endsWith( '32', 3 ); // returns true, because 3 take only 3 characters
+            
+            console.log( z );
+            
+            console.log( zz );
+            
+            
+            // includes
+            
+            var a = color.includes( 'Gr' ); // true, it is case sensitive
+            
+            console.log( a );
+            
+            
+            // repeat -> repeat the string
+            
+            function leftpadding ( string, length = 20 ) {
+                return `${' '.repeat(length - string.length)}${string}`;
+            }
+            
+            console.log( leftpadding( make ) );
+            console.log( leftpadding( model ) );
+            console.log( leftpadding( color ) );
+            
+        </script>
+    </body>
+</html>
