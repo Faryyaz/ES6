@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 23</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Iterables and looping</h1>
+        <script>
+            
+            const cuts = [ 'Britania', 'Brisket', 'Dusk', 'Short' ];
+            
+            // the traditional for loop
+            for ( let i = 0; i < cuts.length; i++ ) {
+                console.log( cuts[ i ] );
+            }
+            
+            
+            // the foreach
+            // break or continue doesn't work with foreach <====== problem
+            cuts.forEach ( ( cut ) => {
+                console.log( cut );
+//                if( cut === 'Brisket') {
+//                    break; // doesnt work with foreach
+//                }
+            } );
+            
+            // return a random element from the array
+            Array.prototype.random = function () {
+                let arrayLen = this.length, obj = this;
+                let ranNum = function() {
+                    const value = Math.round( Math.random() * 10 );
+                    if ( value >= arrayLen  ) {
+                        return ranNum();
+                    } else {
+                        return obj[ value ];
+                    }
+                };
+                return ranNum();
+            }
+            
+            // for in 
+            // when prototypes is modified, it is listed in console as well <======== problem
+            for ( const index in cuts ) {
+                console.log( cuts[ index ] );
+            }
+            
+            console.log( cuts.random() );
+            
+            
+            /// for of
+            // doesnt return the prototype function random in console. 
+            for ( const cut of cuts) {
+                console.log( cut );
+                if( cut === 'Brisket') {
+                    break;
+                }
+            }
+            
+        </script>
+    </body>
+</html>
