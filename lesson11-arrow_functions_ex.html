@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 11</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Arrow function ex</h1>
+        <pre>
+            Exercise 1 convert all time to seconds and do total using arrow functions.
+        </pre>
+        <ul>
+            <li data-time="5:17">
+                Flexbox video
+            </li>
+            <li data-time="8:22">
+                Flexbox video
+            </li>
+            <li data-time="6:34">
+                Redux video
+            </li>
+            <li data-time="3:34">
+                Flexbox video
+            </li>
+            <li data-time="6:46">
+                Redux video
+            </li>
+            <li data-time="5:23">
+                Flexbox video
+            </li>
+            <li data-time="7:12">
+                Flexbox video
+            </li>
+            <li data-time="2:12">
+                Redux video
+            </li>
+            <li data-time="7:24">
+                Flexbox video
+            </li>
+            <li data-time="6:46">
+                Flexbox video
+            </li>
+            <li data-time="6:46">
+                Redux video
+            </li>
+        </ul>
+        <div class="display"></div>
+        <script>
+            
+            
+            ///////////////////////////////////////////////////////////////
+            /////////////////Exercise 1///////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+            
+            const total = {
+                
+                init() {
+                    const times = this.getTime();
+                    const secs = this.convertIntoSeconds( times );
+                    const total = secs.reduce( this.sumSeconds, 0 );
+                    this.display( total );
+                },
+                
+                getTime: () => {
+                    const items = [].slice.call( document.querySelectorAll( 'li' ) );
+                    const elements = items.filter( ( item ) => item.textContent.includes( 'Flexbox' ) ); //flexbox items only
+                    console.log( elements );
+                    const times = elements.map( ( element ) => {
+                        return element.dataset.time;
+                    } );
+                    return times;
+                },
+                
+                convertIntoSeconds: ( times ) => {
+                    const timeInsecs = times.map( ( time ) => {
+                        const timeSplit = time.split( ':' );
+                        const mins = timeSplit[ 0 ];
+                        const sec = timeSplit[ 1 ];
+                        return ( parseInt( mins ) * 60 ) + parseInt( sec );
+                    } );
+                    return timeInsecs;
+                },
+                
+                sumSeconds: ( value1, value2 ) => {
+                    return value1 + value2;
+                },
+                
+                display: ( seconds ) => {
+                    const div = document.querySelector( '.display' );
+                    div.innerHTML = `${ seconds } secs`;
+                }
+            };
+            
+            total.init();
+            
+            
+            ///////////////////////////////////////////////////////////////
+            /////////////////Exercise 2///////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+            
+            const numbers = [ 3, 62, 234, 7, 23, 74, 23, 76, 92 ];
+            
+            const age = numbers.filter(
+                ( num )=> num > 70
+            );
+            
+            console.log( age );
+            
+        </script>
+    </body>
+</html>

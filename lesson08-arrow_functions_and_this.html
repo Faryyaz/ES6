@@ -77,8 +77,9 @@ and open the template in the editor.
                 this.classList.toggle( first );
                 // notice the arrow function here
                 setTimeout( () => {
+                    // no need to use self variable here
                     //self.classList.toggle( 'open' );
-                    // use this as you normally would because arrow function will refer to the initial this above.
+                    // use this as you normally would because arrow function will refer to the initial 'this' above.
                     this.classList.toggle( second );
                 }, '500' );
             } );

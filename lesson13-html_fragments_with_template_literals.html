@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 13</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>HTML fragments with template literals</h1>
+        <div class="display"></div>
+        <script>
+            
+            
+            ////////////////First exercise html basic template
+            
+            const person = {
+                name: 'Fary',
+                job: 'web dev',
+                city: 'phoenix',
+                bio: 'I like development'
+            };
+            
+            const markup = `
+                <div>
+                    <h2>${person.name}</h2>
+                    <p>${person.bio}</p>
+                    <ul>
+                        <li>Job: ${person.job}</li>
+                        <li>City: ${person.city}</li>
+                    </ul>
+                </div>
+            `;
+            
+            const display = document.querySelector( '.display' );
+            display.innerHTML += markup;
+            
+            
+            ///////////////Second exercise looping
+            
+            const dogs =[
+                { name: 'Snickers', age: 2 },
+                { name: 'Milo', age: 3 },
+                { name: 'Tom', age: 1 }
+            ];
+            
+            
+            const markup2 = `
+                <h2>Dogs </h2>
+                <ul>
+                    ${ dogs.map( dog => `<li>${dog.name} is ${dog.age} years old</li>` ).join( '' ) }
+                </ul>
+            `;
+            
+            display.innerHTML += markup2;
+            
+            
+            ///////////////Third exercise If statement
+            
+            const song = {
+                name: 'Live song',
+                artist: 'Wes',
+                featuring: 'Tom'
+            };
+            
+            const markup3 = `
+                <p>
+                    ${song.name} - ${song.artist} <br>
+                    ${song.featuring ? `Featuring: ${song.featuring}` : ``}
+                </p>
+            `;
+            
+            display.innerHTML += markup3;
+            
+            /////////////Forth exercise calling a function inside
+            
+            const beer = {
+                name: 'Belgian Wit',
+                brewery: 'Steam Whistle Brewery',
+                keywords: [ 'pale', 'cloudy', 'spiced', 'crisp' ]
+            };
+            
+            // function defined here
+            const renderKeywords = ( keywords ) => {
+                return `
+                    ${keywords.map( keyword => `<li>${keyword}</li>` )
+                    .join('')}
+                `;
+            }
+            
+            const markup4 = `
+                <h2>${beer.name}</h2>
+                <p>
+                    ${beer.brewery}
+                </p>
+                ${renderKeywords(beer.keywords)}
+            `;
+            
+            display.innerHTML += markup4;
+            
+        </script>
+    </body>
+</html>

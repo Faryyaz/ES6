@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 22</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>The for loop in action</h1>
+        <p>For of can be use on any type of array (i.e collection, list, etc...) as long as it is iterable</p>
+        
+        <p>I am number #1</p>
+        <p>I am number #2</p>
+        <p>I am number #3</p>
+        <p>I am number #4</p>
+        <p>I am number #5</p>
+        
+        <div class="display"></div>
+        <script>
+            
+            const cuts = [ 'Billy', 'Riven', 'Jin', 'Jack Black' ];
+            
+            /// for of loop example
+            
+            for ( let cut of cuts ) {
+                console.log( cut );
+            }
+            
+            //now if we need the index as well, we can just destructure it.
+            // notice the .entries, it is a function available thru js
+            
+            for ( const [ i, cut ] of cuts.entries() ) {
+                console.log( `${ cut } is the ${ i + 1 } item.` );
+            }
+            
+            
+            // normally we would convert arguments to a type of array
+            function addUpNumbers() {
+                const numbers = Array.from( arguments );
+                return numbers.reduce( (acc, values) => {
+                    return acc + values;
+                } );
+            }
+            
+            console.log( addUpNumbers( 100, 200, 300, 400, 500, 600, 700 ) );
+            
+            
+            //// now using for of
+            function addUpNums() {
+                let total = 0;
+                for ( const nums of arguments ) {
+                    total += nums;
+                }
+                return total;
+            }
+            
+            console.log( addUpNums( 100, 200, 300, 400, 500, 600, 700 ) );
+            
+            
+            // another example of using for of
+            const ps = document.querySelectorAll( 'p' );
+            for ( const para of ps ) {
+                para.addEventListener( 'click', function() {
+                    console.log( this.textContent );
+                } );
+            }
+            
+        </script>
+    </body>
+</html>

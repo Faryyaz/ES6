@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 15</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .hl {
+                color: white;
+                background: teal;
+                font-size: 20px;
+                padding: 10px;
+            }
+            
+            .hl:last-child {
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Tagged template Exercise</h1>
+        <div class="display"></div>
+        <script>
+            const dict = {
+                HTML: 'Hyper Text Markup Language',
+                CSS: 'Cascading Style Sheets',
+                JS: 'Javascript'
+            };
+            
+            // we pass the strings and the values as args
+            const addAbbreviations = (strings, ...values) => {
+                const abbreviated = values.map(value => {
+                    if( dict[value] ) {
+                        return `<abbr title="${dict[value]}">${value}</abbr>`;
+                    }
+                    return value;
+                });
+                
+                // acc for accumulator
+                return strings.reduce((acc, string, i) => {
+                    console.log(acc);
+                    return `${acc}${string}${abbreviated[i] || ''}`;
+                }, '');
+                
+            };
+            
+            
+            const first = 'Fary';
+            const last = 'Dil';
+            const sentence = addAbbreviations`Hello my name is ${first} ${last} and I love to code ${'HTML'}, ${'CSS'}
+            and ${'JS'}`;
+            
+            const display = document.querySelector('.display');
+            display.innerHTML = sentence;
+            
+        </script>
+    </body>
+</html>

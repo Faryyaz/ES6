@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 21</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Destructuring functions, multiple returns and named defaults</h1>
+        <div class="display"></div>
+        <script>
+            function convertCurrency( amount ) {
+                return {
+                    USD: amount * 0.75,
+                    GPB: amount * 1.05,
+                    AUD: amount * 1.08,
+                    MEX: amount * 13.50
+                };
+            }
+            
+            const { USD, GPB, AUD, MEX } = convertCurrency( 100 );
+            
+            console.log( USD, MEX );
+            
+            
+            // pass object as param OLD WAY OF DOING IT
+            function defaultTipCalc ( calObject ) {
+                return calObject.total + ( calObject.tip * calObject.total ) + ( calObject.tax * calObject.total );
+            }
+            
+            console.log(defaultTipCalc( {total: 100, tip: 0.12, tax: 0.15} ) );
+            
+            
+            /////// NOW WITH ES6
+            // WE can destructure the param in function.
+            // notice = {}, meaning we can leave it blank when calling the function as there are default params
+            function tipCalc( { total = 100, tip = 0.12, tax = 0.15 } = {} ) { // destructured here
+                return total + ( tip * total ) + ( tax * total );
+            }
+            
+            console.log( tipCalc( {total: 100, tip: 0.12, tax: 0.15} ) );
+            console.log( tipCalc() );
+            
+        </script>
+    </body>
+</html>

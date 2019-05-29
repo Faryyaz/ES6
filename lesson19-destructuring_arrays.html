@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lesson 19</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Destructuring arrays</h1>
+        <div class="display"></div>
+        <script>
+            
+            /////////// example 1
+            
+            const details = [ 'Web', 'Tech', 'Game' ];
+            
+            const [ work, hobby, entertainment  ] = details;
+            
+            console.log( work );
+            console.log( hobby );
+            console.log( entertainment );
+            
+            
+            
+            /////////// example 2
+            
+            const data = 'tom,rita,jim';
+            
+            const [ name1, name2, name3 ] = data.split(',');
+            
+            console.log( name1 );
+            
+            
+            /////////// example 3
+            
+            const team = [ 'wes', 'harry', 'tom', 'kinsley', 'bruce' ];
+            
+            const [ captain, assitant, ...players ] = team;
+            
+            console.log( captain ); // wes
+            
+            console.log( assistant ); // harry
+            
+            console.log( players ); // gives an array [ 'tom', 'kinsley', 'bruce' ]
+            
+        </script>
+    </body>
+</html>
